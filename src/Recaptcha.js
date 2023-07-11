@@ -192,7 +192,27 @@ const Recaptcha = forwardRef(({
             </View>
         );
     };
+if(!footerComponent){
 
+ return (
+        <>
+            <WebView
+                bounces={false}
+                allowsBackForwardNavigationGestures={false}
+                originWhitelist={originWhitelist}
+                onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+                onNavigationStateChange={handleNavigationStateChange}
+                {...webViewProps}
+                source={source}
+                style={webViewStyles}
+                onMessage={handleMessage}
+                ref={$webView}
+            />
+            {renderLoading()}
+        </>
+    );
+    
+}
     return (
         <Modal
             transparent
